@@ -3,7 +3,7 @@ const app = express()
 app.use(express.json())
 const cors = require('cors')
 app.use(cors())
-
+require('dotenv').config();
 const user = require('./routes/user')
 const task = require('./routes/task')
 
@@ -17,4 +17,4 @@ app.get('/', (req,res) => {
 app.use('/api/v1',user)
 app.use('/api/v1',task)
 
-app.listen(1000, () => console.log("Server started"))
+app.listen(process.env.PORT, () => console.log("Server started"))
